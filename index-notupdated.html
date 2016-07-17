@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+	
+// Global Variables
+	
+	var lives = 5;
+
+function threeLetter(){		
+	var threeLetter = ["fox","cow","dog","pig"];
+	var index = Math.floor(Math.random()*threeLetter.length);
+	var three = threeLetter[index];
+	var userGuess = prompt("What is your guess?");
+	var uLC	= userGuess.toLowerCase();
+
+console.log(three);	
+
+// To guess the three letter word
+
+if(uLC === three.charAt(0)){
+		var displayGuess = uLC.toUpperCase();
+		document.getElementById("1").innerHTML = displayGuess;
+
+}
+
+if(uLC === three.charAt(1)){
+		var displayGuess = uLC.toUpperCase();
+		document.getElementById("2").innerHTML = displayGuess;
+}
+
+if(uLC === three.charAt(2)){
+		var displayGuess = uLC.toUpperCase();
+		document.getElementById("3").innerHTML = displayGuess;	
+}
+
+
+// Dead
+if(lives <= 0){
+		document.getElementById("chance").innerHTML = "YOU DIED";
+		document.getElementById("word").innerHTML = three;
+}
+
+
+
+// else{
+// 		lives -= 1; 
+//  		document.getElementById("chance").innerHTML = "You have: " + lives + " left";
+
+// }
+}
+
+
+
+
+	</script>
+</head>
+<body>
+
+<style type="text/css">
+	h3{
+		display:inline;
+	}
+</style>
+<button onclick="threeLetter()"> Button </buton>
+<h3 id ="1"> _ </h3>
+<h3 id ="2"> _ </h3>
+<h3 id ="3"> _ </h3>
+<p id ="chance"></p>
+<p id ="word"></p>
+</body>
+</html>
