@@ -8,74 +8,79 @@
 		display:inline-block;
 	}
 </style>
+<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
 <script type="text/javascript">
-			var animalArray = ["fox","cow","dog","pig"];
+			var animalArray = ["cow","cat","dog","fox","pig"];
 			var index = Math.floor(Math.random()*animalArray.length);
 			var three = animalArray[index];
 			var lives = 15;
+			var userGuesses = [];
 //Gets word in array, sees if user guess is equal to char at, then subtracts if user makes mistake 
-function threeLetterGuess(){	
-	var userGuess = prompt("What is your guess?");
+document.onkeyup = function threeLetterGuess(event){	
+
+	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 	var uLC	= userGuess.toLowerCase();
-
-
-if (uLC === three.charAt(0)) {
+	document.getElementById("guessed").innerHTML = userGuesses;
+for(i = 0; i<3; i++){
+	if (uLC === three.charAt(i))  {
 		var displayGuess = uLC.toUpperCase();
-		document.getElementById("1").innerHTML = displayGuess;
-
-} else if(uLC === three.charAt(1)){
-		var displayGuess = uLC.toUpperCase();
-		document.getElementById("2").innerHTML = displayGuess;
-
-} else if(uLC === three.charAt(2)){
-		var displayGuess = uLC.toUpperCase();
-		document.getElementById("3").innerHTML = displayGuess;
-// Mistakes		
-} else if(uLC === three){
-	document.getElementById("word").innerHTML = three + " " + "GOOD JOB";
-}  else {
-		lives = lives - 1;
- 		document.getElementById("chance").innerHTML = "You have: " + lives + " left";
- 	}
-if (lives <= 0){
-	document.getElementById("chance").innerHTML = "YOU DIED";
-	document.getElementById("word").innerHTML = three;
+		document.getElementById(i).innerHTML = displayGuess;
+		}
 }
 
+
+
+
+if(uLC != three.charAt(0)&&uLC != three.charAt(1)&&uLC != three.charAt(2)) {
+		userGuesses.push(uLC);
+		document.getElementById("guessed").innerHTML = userGuesses;
+		lives = lives - 1;
+ 		document.getElementById("chance").innerHTML = "You have: " + lives + " left";
+	}
+
+
+// IF LIVES RUN OUT
+if (lives <= 0){
 	
+		  location.reload();
+	}
+
  }
 
 
+// RESETS GAME
 
-
-
-
-
-
-
-
+function reset() {
+    location.reload();
+}
 </script>
 
 
 
 
 </head>
+
 <body onload="threeLetter()">
 
-<div id="blanks">
-<button onclick="threeLetterGuess()">start</button> 
-<p id ="chance"></p>
-<p id ="word"></p>
-<p id="clue"> </p>
+<div class="container jumbotron">
 
+<div id="blanks">
 </div>
 
+<button onclick="reset()">reset</button>
+
+<div> Chances: <p id ="chance"> </p> </div>
+<div> Word: <p id ="word"> </p> </div>
+<div> Guessed Letters:<p id ="guessed"></p></div>
+
+</div>
 
 <script type="text/javascript">
 // THIS ADDS BLANKS, ITS IN THE END BECAUSE IT HAS TO LOAD THE HTML ELEMENTS FIRST
 var getid = document.getElementById("blanks");
-function threeLetter(){ 		
-	 for(i = 1; i< 4; i++){
+function threeLetter(){ 	
+	 for(i = 0; i< 3; i++){
 	 		var newH3 = document.createElement("h3");
 	 		newH3.innerHTML = "_" + ",";
 	 		newH3.setAttribute("id",i);
@@ -90,7 +95,8 @@ function threeLetter(){
 // -FIND A WAY SO THAT WHEN YOU DIE OR WIN IT RESETS
 // -CHANGE THE ARRAY SO IT CAN DO 5 LETTER WORDS
 // -ALREADY THINK ABOUT ADDING CSS ELEMENTS TO IT
-// -CHANGE FUNCTIONS NAMES SO IT CAN JUST BE WORDS
+// -CHANGE FUNCTIONS NAMES 
+// -FIX LIVES FIND WAY TO INITIALIZE IT OUTSIDE THE FUNCTION
 
 
 
