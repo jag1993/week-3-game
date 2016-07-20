@@ -1,0 +1,20 @@
+
+	body{
+		background-image:url("../../assets/images/safarizone.png");
+	}
+
+	#pokemon{
+		width:50px;
+		height: 50px;
+	}
+	#blanks{
+		font-size: 25px;
+	}
+	.jumbotron{
+		width:500px;
+		margin: 0 auto;
+		background-color:#7BBF6A !IMPORTANT;
+	}
+	.header{
+		font-size: 20px;
+	}
