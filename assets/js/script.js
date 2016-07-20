@@ -1,9 +1,9 @@
-
+// Global Variables
 			var pokemonArray = ["arbok","oddish","geodude","alakazam","golbat"];
 			var lives = 5;
 			var userGuesses = [];
-
-				var wins = 0;
+			var userGuessesWrong = [];
+			var wins = 0;
 		
 
 function randomWordGenerator(){
@@ -27,6 +27,7 @@ for(i = 0; i< pokemon.length; i++){
 document.onkeyup = function pokemonGuess(event){	
 		var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 		var uLC	= userGuess.toLowerCase();
+		console.log(uLC);
 for(i = 0; i<pokemon.length; i++){
 	if (uLC === pokemon[i]){
 		var pika = new Audio("assets/sounds/pika.mp3");
@@ -37,22 +38,37 @@ for(i = 0; i<pokemon.length; i++){
 
 	}
 
-// Sees if user won
+// Condition if the user's guess is wrong
+if(pokemon.indexOf(uLC) === -1){
+	lives --;
+	userGuessesWrong.push(uLC);
+	document.getElementById("chance").innerHTML = lives;
+	document.getElementById("guessed").innerHTML = userGuessesWrong;
+}
+
+// If user runs out of lives gives user back lives = 5 but resets wins to 0
+if(lives <= 0){
+	userGuesses.splice(0,userGuesses.length);
+	randomWordGenerator();
+	userGuessesWrong.splice(0,userGuessesWrong.length);
+	wins = 0;
+	document.getElementById("wins").innerHTML = wins;
+	lives = 5;
+}
+
+// If user won
 if(userGuesses.join("") === pokemon){
 	wins ++
 	document.getElementById("wins").innerHTML = wins;
 	userGuesses.splice(0,userGuesses.length);
+	userGuessesWrong.splice(0,userGuessesWrong.length);
+	document.getElementById("guessed").innerHTML = userGuessesWrong;
 	randomWordGenerator();
 
 	}
 
 
-if(lives <= 0){
-	userGuesses.splice(0,userGuesses.length);
-	randomWordGenerator();
-	lives = lives + 5;
-	document.getElementById("chance").innerHTML = lives;
-}
+
 
 	}
 
@@ -90,7 +106,7 @@ if(pokemon === pokemonArray[4]){
 
 
 
-// // Resets game, activated by button
+//Resets game, activated by button
 	function reset() {
     	location.reload();
 	}
