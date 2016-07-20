@@ -1,0 +1,76 @@
+  
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+<link rel="icon" type="image/png" href="assets/images/pokeball.gif">
+
+
+
+</head>
+
+<body onload="randomWordGenerator()">
+
+<audio autoplay loop="true">
+  <source src="assets/sounds/cycling.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+<div class="jumbotron">
+<div class ="row">
+<h4 class="header"> Safari Zone </h4>
+</div>
+<div id="blanks">
+</div>
+
+<div class="row">
+<img src ="assets/images/charizard.gif" id="pokemon">
+<img src ="assets/images/blastoise.gif" id="pokemon">
+<img src ="assets/images/pikachu.gif" id="pokemon">
+<img src ="assets/images/venusaur.gif" id="pokemon">
+</div>
+<div class = "row">
+<div> Wins: <p id ="wins"></p></div>
+	<img src ="assets/images/dragonair.gif" id="pokemon">
+	<img src ="assets/images/pinsir.gif" id="pokemon">
+	<img src ="assets/images/paras.gif" id="pokemon">
+	<img src ="assets/images/poliwag.gif" id="pokemon">
+</div>
+<div class = "row">
+<div> Chances: <p id ="chance"> </p> </div>
+	<img src ="assets/images/chansey.gif" id="pokemon">
+	<img src ="assets/images/cubone.gif" id="pokemon">
+	<img src ="assets/images/kangaskhan.gif" id="pokemon">
+	<img src ="assets/images/venomoth.gif" id="pokemon">
+</div>
+<div class="row">
+	<div> Wrong Guesses:<p id ="guessed"></p></div>
+	<img src ="assets/images/buterfree.gif" id="pokemon">
+	<img src ="assets/images/eggsecutor.gif" id="pokemon">
+	<img src ="assets/images/exeggcute.gif" id="pokemon">
+	<img src ="assets/images/nidoran.gif" id="pokemon">
+
+</div>
+<div class="row">
+<div > Type: 	<img src ="assets/images/pokeball.gif" id="clue1"> 
+				<img src ="assets/images/pokeball.gif" id="clue2"></div>
+</div>
+<div class="row">
+
+<button class="btn-success" onclick="reset()">RESET</button>
+</div>
+
+</div>
+</div>
+
+
+</body>
+
+<script src="assets/js/script.js"></script>
+</html>
+
+ 
