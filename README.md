@@ -15,11 +15,14 @@
   > 4. If a user gets a letter wrong 1 Chance is subtracted
   > 5. If the Chance counter reaches zero, the Wins counter resets to 0
   
-
 ## Languages Used
   > 1. HTML
   > 2. CSS
   > 3. JavaScript
+
+  
+  
+
   
   
   
